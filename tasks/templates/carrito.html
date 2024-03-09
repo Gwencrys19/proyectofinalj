@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/carrito.css' %}">
+
+
+
+
+<div class="container">
+  <div class="content">
+    <div class="search-container">
+      <form method="post" action="/carrito/">
+        {% csrf_token %}
+        <input type="text" name="nombre" placeholder="Buscar" >
+        <button class="button">Buscar</button>
+      </form>
+    </div>
+
+    <div class="productos-container">
+      {% for producto in productos %}
+      <div class="producto">
+        <form method="post" id="formulario" action="/agregar_carrito/">
+          {% csrf_token %}
+          <input type="hidden" name="producto_id" value="{{ producto.id }}">
+          <div class="detalle-producto">
+            <label for="nombre">Nombre producto:</label>
+            <input type="text" name="nombre" value="{{producto.nombre_productos}}" readonly style="background-color:transparent; ">
+            <label for="precio">Precio:</label>
+            <input type="text" name="precio" value="{{ producto.precio }}" style="background-color:transparent; ">
+            <label for="cantidad">Cantidad:</label>
+            <input class="inputText" type="number" id="cantidad" name="cantidad" value="1" min="1" style="background-color:transparent; ">
+            <button class="button">Agregar</button>
+          </div>
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="transaction-container">
+      <table id="transactionTable" border="3">
+        <thead>
+          <tr>
+            <th>Nombre Producto</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <tr>
+            <td colspan="3">Total</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+      <button id="reset" class="button">Reiniciar</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+{% endblock %}

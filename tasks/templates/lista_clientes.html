@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block clientis %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/clientes.css' %}">
+    <title>Lista de Clientes</title>
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <div class="container">
+        <h1 class="titulo">Lista de Clientes</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th class="amarillo">Cedula</th>
+                    <th class="amarillo">Nombre</th>
+                    <th class="amarillo">Email</th>
+                    <th class="amarillo" >Dirección</th>
+                    <th class="amarillo">Teléfono</th>
+                    <th class="amarillo" >Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cliente in clientes %}
+                <tr>
+                    <td class="cedula">{{ cliente.Id_cedula }}</td>
+                    <td class="nombre">{{ cliente.nombres }}</td>
+                    <td class="email">{{ cliente.email }}</td>
+                    <td class="direccion">{{ cliente.direccion }}</td>
+                    <td class="telefono">{{ cliente.telefono }}</td>
+                    <td class="actions">
+                        <div class="center-button">
+                            <div class="button-container">
+                                <a href="{% url 'editar_cliente' cliente.id %}">Modificar</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endblock %}
+</body>
+</html>

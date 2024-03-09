@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+    {% block css %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/iniciosesion.css' %}">
+    {% endblock %}
+    
+    {% block content %}
+    
+
+    
+    {{error}}
+    
+    
+    <div class="container">
+        <div class="screen">
+            <div class="screen__content">
+                <div class="encabeas">
+                    <h1 class="titulo">LOGIN</h1>
+                  </div>                                   
+                <form action="/iniciarSesion/" method="post" class="login">
+                    {% csrf_token %}
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input name="username" class="login__input" placeholder="Username">
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-lock"></i>
+                        <input type="password" name="password" class="login__input" placeholder="Password">
+                    </div>
+                    <button class="button login__submit">
+                        <span class="button__text">Iniciar Sesion</span>
+                        <i class="button__icon fas fa-chevron-right"></i>
+                    </button>
+                    <a class="button login__submit" href="{% url 'reset_password' %}">¿olvido su contraseña?</a>
+                </form>
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>
+        </div>
+    </div>
+    
+    {% endblock %}

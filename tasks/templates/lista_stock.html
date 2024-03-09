@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Stock</title>
+</head>
+<body>
+    <h1>Lista de Stock</h1>
+    <ul>
+    {% for stock in stocks %}
+        <li>{{ stock }}</li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'agregar_stock' %}">Agregar Stock</a>
+</body>
+</html>

@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <script src="{% static 'js/carrito.js' %}"></script>
+    
+    <title>Login Proyecto</title>
+
+    {% block css %}
+    {% endblock %}
+
+</head>
+
+<header>
+
+    <div class="wrapper">
+        <div class="logo">LOGO</div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="/carrito">Carrito</a></li>
+                    <li><a href="/productos/">Productos Agregados</a></li>
+                    <li><a href="/clientes/">Clientes</a></li>
+                    <li><a href="/agregar_cliente/">Agregar Clientes</a></li>
+                    <li><a href="/logout">Cerrar Sesión</a></li>
+                {% else %}
+                    <li><a href="/iniciarSesion">Iniciar Sesión</a></li>
+                {% endif %}
+                {% if user.is_superuser %}
+                <li><a href="/signup">Registrar Usuario</a></li>
+                <li><a href="/agregar_producto">Crear Productos</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+
+
+    {% block content %}
+    
+    {% endblock %}
+
+    {% block extra %}
+
+    {% endblock %}
+
+    {% block listis %}
+
+    {% endblock %}
+
+    {% block clientis %}
+
+    {% endblock %}
+
+    {% block ediclientis %}
+
+    {% endblock %}
+
+    {% block agregarcl %}
+    
+    {% endblock %}
+ 
+</body>
+
+</html>

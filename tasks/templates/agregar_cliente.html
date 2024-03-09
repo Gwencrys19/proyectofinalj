@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% block agregarcl %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/agregarcl.css' %}">
+    <title>Agregar Cliente</title>
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <form method="post" class="form-container">
+        <h1>Agregar Cliente</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button type="button" onclick="window.location.href='/'" class="btn btn-secondary">Volver</button>
+    </form>    
+    {% endblock %}
+</body>
+</html>

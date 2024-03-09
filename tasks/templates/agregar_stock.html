@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Agregar Stock</title>
+</head>
+<body>
+    <h1>Agregar Stock</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Agregar Stock</button>
+    </form>
+</body>
+</html>

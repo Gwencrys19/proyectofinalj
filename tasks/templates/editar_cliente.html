@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block ediclientis %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/editarcl.css' %}">
+    <title>Editar Clientes</title>
+    {% endblock %}
+</head>
+<body>
+    {% block content %}
+    <h1>Editar Cliente</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="but"><button type="submit">Guardar</button></div>
+        </form>
+    {% endblock %}
+
+</body>
+</html>
